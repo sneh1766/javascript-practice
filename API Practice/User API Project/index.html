@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory API Project</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --accent: #4a90e2;
+            --error-color: #d0021b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 20px 0;
+            box-sizing: border-box;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-box:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        #loading {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--accent);
+            display: none;
+            margin: 20px 0;
+        }
+        #error-message {
+            background-color: #fbebeb;
+            color: var(--error-color);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--error-color);
+            display: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        .card p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .card .email {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>User Directory</h1>
+    
+    <input type="text" id="searchInput" class="search-box" placeholder="Search users by name or email..." disabled>
+
+    <div id="loading">⏳ Fetching profiles from network...</div>
+    <div id="error-message"></div>
+
+    <main id="userGrid" class="grid"></main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
